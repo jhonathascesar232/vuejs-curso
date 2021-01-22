@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio componentes</title>
+    <style>
+        .rotated{
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+	<div id="app">
+		<meu-componente-gira>
+            <input type="text" name="" id="" >
+        </meu-componente-gira>
+        
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+        Vue.component('meu-componente-gira',{
+            
+            // para referenciar a div 'ref='nome''
+            template:`
+                <div>
+                    <button @click="giraElemento">Click</button>
+                    
+                    <div ref="my-element">
+                        <slot ></slot>
+                    </div>
+                </div>
+            `,
+            data: function(){
+                return {
+                    angulo: 0,
+                }
+            },
+            methods: {
+                giraElemento: function(){
+                    this.angulo += 90;
+                    // para acessar o proprio elemento e utilizado this.$refs.elemento
+                    // parei aki
+                    this.$refs.my-element.style.transform = `rotateZ(${this.angulo}deg)`;
+                },
+            },
+        })
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: '',
+			}
+		})
+	</script>
+</body>
+</html>
