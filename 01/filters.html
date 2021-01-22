@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Filtros</title>
+</head>
+<body>
+	<div id="app">
+		<!-- o que vem antes do pipe é passado como argumento no filtro -->
+		{{ title | upper }}<br>
+		<span>Reverso</span>
+		<p>{{ title | reverse }}</p>
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js" ></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				title: 'TreinaWEB'
+			},
+			filters: {
+				upper: function(text){
+					return text.toUpperCase();
+				},
+				reverse: function(text){
+					return text.split('').reverse().join('')
+				}
+			}
+		})
+	</script>
+</body>
+</html>

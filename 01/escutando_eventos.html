@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<button v-on:click="upCounter;">Click me</button>
+		<!-- @click -->
+		{{ contador }}
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js" ></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				contador: 0,
+			},
+			methods: {
+				upCounter: function(){
+					this.contador++;
+				}
+			}
+		})
+		// evento 'abc', quando chamado executa app.upCounter
+		// adiciona '()' se passar parametro
+		app.$on('abc', app.upCounter);
+		//chamado evento 'abc'
+		app.$emit('abc');
+		//chamado evento 'abc' com parametro 'x'
+		app.$emit('abc', x);
+
+		// $once executa o metodo apenas uma vez
+		app.$once('abc', app.upCounter);
+
+	</script>
+</body>
+</html>

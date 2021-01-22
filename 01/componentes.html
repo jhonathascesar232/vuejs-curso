@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<div is="meu-componente"></div>
+		<meu-componente></meu-componente>
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		Vue.component('meu-componente', {
+			template: '<div>Hello {{ title }}<br>{{ok}}</div>',
+			// retorna os dados para o template
+			data: function(){
+				return {
+					title: 'Bye!',
+					ok: 'OK',
+				}
+			}
+		})
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello World!'
+			}
+		})
+	</script>
+</body>
+</html>
