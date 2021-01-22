@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- v-bind:name="variavel" -->
+		<div is="meu-componente" v-bind:name="message"></div>
+		
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		Vue.component('meu-componente', {
+			template: '<div>Hello {{ name }}</div>',
+			// props: ['name'],
+			props: {
+				name: ['String'],
+			},
+			// retorna os dados para o template
+			// data: function(){
+			// 	return {
+			// 		title: 'Bye!',
+			// 	}
+			// }
+		})
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello World!'
+			}
+		})
+	</script>
+</body>
+</html>

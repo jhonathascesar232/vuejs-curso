@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Filtro remove ou adiciona vogais</title>
+</head>
+<body>
+	<div id="app">
+		<button @click="isFilterOn = !isFilterOn" >CLICK ME</button>
+		<p>
+			{{ texto | myFilter(isFilterOn)}}
+		</p>
+	</div>
+
+	<script src="https://unpkg.com/vue/dist/vue.js" ></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				texto: 'TreinaWeb',
+				isFilterOn: true,
+			},
+			filters: {
+				myFilter: function(texto, isOn){
+					return isOn ? texto.replace(/[aeiou]/g, '') : texto;
+				}
+			}
+		})
+	</script>
+</body>
+</html>

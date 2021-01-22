@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Calculadora</title>
+
+	<style>
+		*{ padding: 0px; margin: 0px, border-box: 0px; }
+		body{
+			display: flex;
+			justify-content: center;
+			font-weight: bold;
+			background-color: rgba(0,0,0,.3);
+		}
+
+		#app{
+			margin-top: 5em;
+			width: 50%;
+			height: 50vh;
+			border: 1px solid gray;
+			display: block;
+			overflow-x: hidden;
+			overflow-y: hidden;
+			border-radius: 10px 10px 0 0;
+			background-color: rgb(163, 238, 237);
+		}
+
+		.d-flex{
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			/*background-color: #f1f2f3;*/
+			/*padding: 0px 10px;*/
+		}
+
+		.calc-top{
+			width: 100%;
+			margin-bottom: 3em;
+			background-color: red;
+			padding: 2em 0;
+			align-items: center;
+		}
+		.painel{
+			width: 100%;
+			font-size: 2.5em;
+			border-radius: 10px 10px 0 0;
+			text-align: right;
+			padding-right: 1em;
+		}
+		.btns-n{
+			width: 75%;
+		}
+		.btns-o{
+			display: block;
+			width: 25%;
+		}
+		.opera > button{
+			width: 100%;
+			font-size: 1.5em;
+			padding: .5em;
+		}
+		.btns-n > button{
+			width: 33.33%;
+			padding: .5em;
+			font-size: 1.5em;
+			/*background-color: #F3F3F3;*/
+		}
+		.red{ color: red }
+		.btns-n > .operador-igual{
+			width: 66.66%;
+			font-size: 1.5em;
+		}
+		.clear{
+			width: 100%;
+			display: flex;
+			justify-content: flex-end;
+		}
+		.clear > button {
+			font-size: 1.5em;
+			width: 25%;
+			padding: .5em;
+		}
+		
+	</style>
+</head>
+<body>
+	<div id="app">
+		<div :class="calcTop">
+			<input type="text"
+				class="painel"
+				placeholder="0"
+				value="0" 
+			>
+		</div>
+		<div class="clear">
+			<button class="red">C</button>
+		</div>
+		<div class="d-flex">
+			<div class="btns-n">
+				<button
+					@click="btnClick(n)"
+					v-for="n in numero"
+					type="button"
+					:class="operadorIgual(n)"
+				>
+					{{ n }}
+				</button>	
+			</div>
+			<div class="btns-o">
+				<div class="opera"
+					v-for="operador in operadores"
+				>
+					<button :class="colorRed(operador)">{{operador}}</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://unpkg.com/vue/dist/vue.js" ></script>
+
+	<script>
+		var calculadora = new Vue({
+			el: "#app",
+			data: {
+				numero: [1,2,3,4,5,6,7,8,9,0, "="],
+				operadores: ["+","-","*","/"],
+				valorDoPainel: 0,
+			},
+			methods: {
+				calcTop: function(){
+					return "calc-top";
+				},
+				colorRed: function(o){
+					if(o == "C"){
+						return "red";
+					}else{
+						return "";
+					}
+				},
+				operadorIgual: function(n){
+					if(n == "="){
+						return "operador-igual";
+					}else{
+						return "";
+					}
+				},
+				btnClick: function(numero){
+					const painel = document.querySelector(".painel").value;
+					console.log(numero);
+
+				},
+				valorPainel: function(){
+					return this.valorDoPainel;
+				}
+			},
+		})
+
+		// calculadora.$on('onclick', calculadora.btnClick())
+	</script>
+
+</body>
+</html>
