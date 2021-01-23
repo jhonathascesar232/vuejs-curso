@@ -5,9 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Desafio componentes</title>
     <style>
-        .rotated{
-            transform: rotate(90deg);
-        }
+
     </style>
 </head>
 <body>
@@ -27,7 +25,7 @@
                 <div>
                     <button @click="giraElemento">Click</button>
                     
-                    <div ref="my-element">
+                    <div ref="myElement" class="ani">
                         <slot ></slot>
                     </div>
                 </div>
@@ -42,7 +40,8 @@
                     this.angulo += 90;
                     // para acessar o proprio elemento e utilizado this.$refs.elemento
                     // parei aki
-                    this.$refs.my-element.style.transform = `rotateZ(${this.angulo}deg)`;
+                    // nome do elemento não pode ser separado por '-'
+                    this.$refs.myElement.style.transform = `rotateZ(${this.angulo}deg)`;
                 },
             },
         })
