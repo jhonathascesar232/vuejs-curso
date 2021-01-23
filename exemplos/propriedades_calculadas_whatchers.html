@@ -31,7 +31,9 @@
                 // a propriedade tem que ter o mesmo nome do objeto
                 question: function(value){
                     this.value = 'thinking...';
-                    setTimeout(() => {this.answer = `yes`}, 3000)
+                    // setTimeout( ()=>{} ) sempre necessecita ()=>{ para passar alguma
+                    // alteração de variavel}
+                    setTimeout(() => {this.answer = `yes`}, 3000);
                 }
             }
 		})
