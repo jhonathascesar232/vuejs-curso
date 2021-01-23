@@ -23,16 +23,12 @@
 		>
 
 		<ul>
-			<li v-for="item in pokemonList" class="poke-list-item">
-				<img 
-					:src="'https://serebii.net/pokedex-xy/icon/'+item.number+'.png'"
-					alt=""
-				>
-				<span>
-					{{ item.number | pokeNumber }} {{ item.name }}
-				</span>
-				
-			</li>
+			<my-list v-for="item in pokemonList"
+				:pokemon="item"
+				:key="item.number"
+			>
+
+			</my-list>
 		</ul>
 	</div>
 
@@ -40,6 +36,7 @@
 	<script src="js/vue.js" ></script>
 	<!-- filtros globais tem que ser chamado antes da app -->
 	<script src="js/filters.js"></script>
+	<script src="js/list_component.js"></script>
 	<script src="js/app.js"></script>
 
 </body>
