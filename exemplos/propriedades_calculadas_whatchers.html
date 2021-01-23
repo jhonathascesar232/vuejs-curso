@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio componentes</title>
+    <style>
+
+    </style>
+</head>
+<body>
+	<div id="app">
+        <p>Question:</p>
+        <p>{{ question }}</p>
+        <p>Answer:</p>
+        <p v-html>{{ answer }}</p>
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+                question: '',
+                answer: '',
+			},
+            // utilizado em operações assincronas
+            // propriedades observadas adiciona watch:{}
+            watch: {
+                // a propriedade tem que ter o mesmo nome do objeto
+                question: function(value){
+                    this.value = 'thinking...';
+                    setTimeout(() => {this.answer = `yes`}, 3000)
+                }
+            }
+		})
+	</script>
+</body>
+</html>
