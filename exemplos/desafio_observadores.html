@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Desafio obervadores</title>
+</head>
+<body>
+	<div id="app">
+		<div>
+			<p>{{ numero }}</p>
+
+			<p><button @click="upNumero">Click</button></p>
+		</div>
+		<div>
+			<p >{{ lista }}</p>
+		</div>
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				// variaveis que serão alteradas
+				numero:0,
+				lista: [],
+			},
+			methods: {
+				// metodo para alterar 
+				upNumero: function(){
+					this.numero++;
+					this.lista.unshift(this.numero-1);
+					// this.lista.sort();
+					// this.lista.reverse()
+				}
+			},
+			// obervador para a variavel
+			watch: {
+				// mesmo nome da variavel
+				lista: function(){
+					return this.lista;
+				}
+			},
+			
+		})
+	</script>
+</body>
+</html>

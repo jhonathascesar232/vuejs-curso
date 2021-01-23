@@ -24,5 +24,6 @@ const app = new Vue({
 				pokemon => pokemon.name.includes(nameFilter)
 			) 
 		}
-	}
+	},
+	
 })
