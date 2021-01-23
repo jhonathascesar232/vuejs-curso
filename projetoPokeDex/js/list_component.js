@@ -3,7 +3,7 @@ Vue.component('my-list',{
         <li 
             class="poke-list-item">
             <img 
-                :src="'https://serebii.net/pokedex-xy/icon/'+pokemon.number+'.png'"
+                :src="sprite"
                 alt=""
             >
             <span>
@@ -13,5 +13,15 @@ Vue.component('my-list',{
         </li>
     `,
     props: ['pokemon'],
+    computed: {
+        number: function(){
+            //  acessa o filtro 'pokeNumber' passa 'this.pokemon.number'
+            //  como parametro e retorna o número formatado
+            return Vue.filter('pokeNumber')(this.pokemon.number);
+        },
+        sprite: function(){
+            return `https://serebii.net/pokedex-xy/icon/${this.number}.png`;
+        },
+    }
 })
 // props são variaveis que recebem para o componente
