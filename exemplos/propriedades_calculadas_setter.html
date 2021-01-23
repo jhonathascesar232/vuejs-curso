@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio componentes</title>
+    <style>
+
+    </style>
+</head>
+<body>
+	<div id="app">
+        <p>Full Name:</p>
+        <p>{{ fullName }}</p>
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+                firstName: 'jhon',
+                lastName:'Silva',
+				message: 'Treina Web',
+			},
+            // propriedades calculadas adiciona computed:{}
+            computed: {
+                fullName: {
+                    get: function(){
+                        return `${this.firstName} ${this.lastName}`;
+                    },
+                    set: function(value){
+                        const name = value.split(' ');
+                        this.firstName = name[0];
+                        this.lastName = [1];
+                    }
+                }// fim fullName
+            }
+		})
+	</script>
+</body>
+</html>
