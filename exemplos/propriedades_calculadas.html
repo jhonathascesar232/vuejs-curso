@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio componentes</title>
+    <style>
+
+    </style>
+</head>
+<body>
+	<div id="app">
+        <p>{{ reverse }}</p>
+        <p>Full Name:</p>
+        <p>{{ fullName }}</p>
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+                firstName: 'jhon',
+                lastName:'Silva',
+				message: 'Treina Web',
+			},
+            // propriedades calculadas adiciona computed:{}
+            computed: {
+                reverse: function(){
+                    return this.message.split('').reverse().join('');
+                },
+                fullName: function(){
+                    return `${this.firstName} ${this.lastName}`
+                }
+            }
+		})
+	</script>
+</body>
+</html>
