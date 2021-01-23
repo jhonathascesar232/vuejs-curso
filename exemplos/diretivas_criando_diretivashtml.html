@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="bt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- as diretivas tem 'v-' diretiva criada ( v-hello )-->
+		<input v-hello type="text">
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		// nova diretiva com nome 'hello'
+		Vue.directive('hello', {
+			//	insserted é executado quando o elemento for renderizado(inserido)
+			//	recebe o proprio elemento onde a diretiva estar
+			inserted: function(el){
+				//	atribui 'Hello World!' a value
+				el.value = 'Hello World!';
+			}
+		})
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello World!'
+			}
+		})
+	</script>
+</body>
+</html>
