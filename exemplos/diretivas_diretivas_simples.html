@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="bt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- as diretivas tem 'v-' diretiva criada ( v-color )-->
+		<input v-color="color" type="text" style="color: white">
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		// nova diretiva com nome 'color', binding é a variavel, el é o proprio elemento
+		Vue.directive('color', function(el, binding){
+			//	'el' é utilizado para acessar o elemento 
+			el.value = 'Hello world!';
+			console.log(binding);
+			el.style.backgroundColor = binding.value; //	binding.value == 'gray'
+		})
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				message: 'Hello World!',
+				color: 'gray',
+			}
+		})
+	</script>
+</body>
+</html>
