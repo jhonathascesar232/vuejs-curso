@@ -3,14 +3,15 @@ const app = new Vue({
 	el: '#app',
 	data: {
 		pokemonList: [
-			{'name': 'charizard', 'number':6},
-			{'name': 'squirtle', 'number':7},
-			{'name': 'pikachu', 'number':25},
-			{'name': 'celebi', 'number':251},
-			{'name': 'lucario', 'number':448},
+			
 		],
 		//	vazio para inicio da renderização
 		nameFilter: '',
+	},
+	mounted: function(){
+		PokeService.API.Pokemon.listAll().then(pokemonList => {
+			this.pokemonList = pokemonList;
+		})
 	},
 	computed: {
 		//	função para retorna todos que contem o 'nameFilter'
