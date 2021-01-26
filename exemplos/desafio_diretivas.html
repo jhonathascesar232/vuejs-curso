@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="bt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<!-- as diretivas tem 'v-' diretiva criada ( v-diretiva )-->
+		
+		<input v-diretiva="angulo" type="text" style="color: white">		
+		
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		// nova diretiva com nome 'color', binding é a variavel, el é o proprio elemento
+		Vue.directive('diretiva', function(el, binding){
+			//	'el' é utilizado para acessar o elemento 
+			
+			el.addEventListener('click', function(){
+				var angulo = binding.value += 90;
+
+				const rotacao = `rotateZ(${angulo}deg)`;
+				console.log(angulo);
+				el.style.transform = rotacao; //	binding.value == 'gray'
+			})
+		})
+
+		var app = new Vue({
+			el: '#app',
+			data: {
+				angulo: 0,
+				myText: 'Hello world!',
+			}
+		})
+	</script>
+</body>
+</html>
