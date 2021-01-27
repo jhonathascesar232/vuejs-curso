@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<input type="text" v-model="myText">
+		<ul id="lista">
+			<li v-for="item in myList">
+				{{ item }}
+			</li>
+		</ul>
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		
+		var app = new Vue({
+			el: '#app',
+			data: {
+				myText: '',
+			},
+			// propriedade calculada
+			computed: {
+				// a função tem que ter o mesmo nome da propriedade
+				myList: function(){
+					var letras = [];
+					var texto = this.myText.split('');	// transdorma myText em uma array
+					// percorre a item da lista texto
+					texto.forEach(char => {				// passa a var char para a arrow function
+						if (!letras.includes(char)){		// verifica se char NÃO esta em letras
+							letras.push(char);			// se NÃO é adicionado o CHAR a lista letras
+						}
+					})
+					return letras.sort() 				// retorna as lista com letras ordenadas
+				}
+			}
+		})
+	</script>
+</body>
+</html>
