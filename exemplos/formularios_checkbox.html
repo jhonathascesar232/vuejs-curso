@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulários</title>
+</head>
+<body>
+	<div id="app">
+        <!-- varios checkbox é concatenado na var -->
+        <!-- tem que ter v-model="var" -->
+        <!-- atribui o value a variavel quando marcado -->
+        <p>CheckBox</p>
+		<input
+			type="checkbox"
+			value="A"
+			v-model="myList"  
+		/>
+		<input
+			type="checkbox"
+			value="B"
+			v-model="myList"
+		>
+		<input
+			type="checkbox"
+			value="C"
+			v-model="myList"
+		>
+		{{ myList }}
+		<hr>
+		<!-- se o checkbox tiver marcado retorna o value 5 se não retorna value 20 -->
+		<input
+			type="checkbox"
+			v-model="myCheck"
+			:true-value="5"
+			:false-value="20"
+		>
+		<!-- var myCheck recebe value de input com v-model="myCheck" -->
+		{{ myCheck }}
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				myList: [],
+				myCheck: '',
+			}
+		})
+	</script>
+</body>
+</html>
