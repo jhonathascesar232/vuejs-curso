@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulários</title>
+	<style>
+		body
+		{
+			background-color: #f1f2f3;
+			color: Black;
+			/*animação simples*/
+			transition-property: background-color;
+			transition-duration: 1.5s;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+		<!-- com o atributo multiple transforma a var em um array -->
+		<select
+			name=""
+			id=""
+			v-model="selected"
+			multiple
+		>
+		<!-- atribui o value a var/ uma unica opção -->
+		<!-- adicionando a diretiva v-bind:value ou :value atribui o value a variavel -->
+		<!-- o que é mostrado é 'A' e o que é atribuido é 1 -->
+			<option :value="1">A</option>
+			<option value="B">B</option>
+			<option value="C">C</option>
+		</select>
+		{{ selected }}
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				selected: '',
+			},
+			
+		})
+
+	</script>
+</body>
+</html>
