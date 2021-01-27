@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulários</title>
+	<style>
+		body
+		{
+			background-color: #f1f2f3;
+			color: Black;
+			/*animação simples*/
+			transition-property: background-color;
+			transition-duration: 1.5s;
+		}
+	</style>
+</head>
+<body>
+	<div id="app">
+        <!-- varios checkbox é concatenado na var -->
+        <!-- tem que ter v-model="var" -->
+        <!-- atribui o value a variavel quando marcado -->
+        <!-- quando tem varios checkbox agrupados passa a ser um array(a variavel) -->
+        <p>CheckBox</p>
+		<input
+			type="checkbox"
+			value="A"
+			v-model="myList"  
+		/>
+		<input
+			type="checkbox"
+			value="B"
+			v-model="myList"
+		>
+		<input
+			type="checkbox"
+			value="C"
+			v-model="myList"
+		>
+		{{ myList }}
+		<hr>
+		<!-- quando for radio button o value da var é apenas uma das opções -->
+		<input
+			type="radio"
+			name=""
+			v-model="myRadio"
+			value="A"
+			@click="mudaCor()"
+		>
+		<input
+			type="radio"
+			name=""
+			v-model="myRadio"
+			value="1"
+			@click="mudaCor"
+		>
+		<!-- <input
+			type="radio"
+			name=""
+			v-model="myRadio"
+			value="C"
+		> -->
+		<!-- apenas um valor é recebido -->
+		{{ myRadio }}
+
+	</div>
+
+	<script src="js/vue.js" ></script>
+	<script>
+		var app = new Vue({
+			el: '#app',
+			data: {
+				myList: [],
+				myRadio: '',
+			},
+			methods: {
+				mudaCor: function(){
+					var b = document.querySelector("body");
+
+					console.log()
+					if (this.myRadio=="1"){
+						b.style.backgroundColor = 'red';
+					}else{
+						b.style.backgroundColor = 'blue';
+					}
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>
